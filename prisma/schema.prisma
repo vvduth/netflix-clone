@@ -71,3 +71,4 @@ model Movie {
   genre String 
   duration String 
 }
+
