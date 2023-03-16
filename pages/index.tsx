@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   return (
     <>
-     <h1 className='text-3xl font-bold underline'>Nextflix clone</h1>
+     <h1 className='text-white text-3xl font-bold underline'>Nextflix clone</h1>
     </>
   )
 }
