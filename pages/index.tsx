@@ -7,6 +7,9 @@ import { NextPageContext } from "next";
 import userCurrentUser from "@/hooks/useCurrentUser";
 import Navbar from "@/components/Navbar";
 import BillBoard from "@/components/BillBoard";
+import MoviesList from "@/components/MoviesList";
+import useMoviesList from "@/hooks/useMoviesList";
+import useFav from "@/hooks/useFav";
 const inter = Inter({ subsets: ["latin"] });
 
 export async function getServerSideProps(context: NextPageContext) {
@@ -26,11 +29,18 @@ export async function getServerSideProps(context: NextPageContext) {
 }
 
 export default function Home() {
+
+  const {data: movies } = useMoviesList() ; 
+  const {data: favMovies } = useFav() ; 
   const { data: user } = userCurrentUser();
   return (
     <>
       <Navbar />
       <BillBoard />
+      <div className="pb-40">
+        <MoviesList data={movies} title="Trending now"/> 
+        <MoviesList data={favMovies} title="My List"/> 
+      </div>
     </>
   );
 }
