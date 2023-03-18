@@ -1,6 +1,6 @@
 # FullStack Netflix Clone
 
-![pic1](pic1.png)
+![pic1](pic1.PNG)
 
 This is a full-stack web application that aims to clone some of the most important functionalities of Netflix. This application was built using React, NextJS, TailwindCSS, and Prisma, and it includes the following features:
 
