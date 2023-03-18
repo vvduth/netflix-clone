@@ -10,6 +10,8 @@ import BillBoard from "@/components/BillBoard";
 import MoviesList from "@/components/MoviesList";
 import useMoviesList from "@/hooks/useMoviesList";
 import useFav from "@/hooks/useFav";
+import InfoModal from "@/components/InfoModal";
+import useInfoModal from "@/hooks/useInfoModal";
 const inter = Inter({ subsets: ["latin"] });
 
 export async function getServerSideProps(context: NextPageContext) {
@@ -29,17 +31,18 @@ export async function getServerSideProps(context: NextPageContext) {
 }
 
 export default function Home() {
-
-  const {data: movies } = useMoviesList() ; 
-  const {data: favMovies } = useFav() ; 
+  const { data: movies } = useMoviesList();
+  const { data: favMovies } = useFav();
   const { data: user } = userCurrentUser();
+  const {isOpen , closeModal} = useInfoModal() ; 
   return (
     <>
+      <InfoModal visible={isOpen} onClose={closeModal} />
       <Navbar />
       <BillBoard />
       <div className="pb-40">
-        <MoviesList data={movies} title="Trending now"/> 
-        <MoviesList data={favMovies} title="My List"/> 
+        <MoviesList data={movies} title="Trending now" />
+        <MoviesList data={favMovies} title="My List" />
       </div>
     </>
   );
