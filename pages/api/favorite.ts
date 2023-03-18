@@ -40,6 +40,7 @@ export default async function handler(
       const { currentUser } = await serverAuth(req);
 
       const { movieId } = req.body;
+      
       const existingMovie = await prismadb.movie.findUnique({
         where: {
           id: movieId,

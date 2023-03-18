@@ -10,6 +10,7 @@ interface FavButtonProps {
 const FavButton: React.FC<FavButtonProps> = ({ movieId }) => {
   const { mutate: mutateFav } = useFav();
   const { data: currentUser, mutate } = userCurrentUser();
+  
 
   const isFav = useMemo(() => {
     const list = currentUser?.favouriteIds || [];
@@ -18,8 +19,9 @@ const FavButton: React.FC<FavButtonProps> = ({ movieId }) => {
 
   const toggleFav = useCallback(async () => {
     let res;
+    
     if (isFav) {
-      res = await axios.delete("/api/favorite", { data: movieId });
+      res = await axios.delete("/api/favorite", { data: {movieId} });
     } else {
       res = await axios.post("/api/favorite", { movieId });
     }
